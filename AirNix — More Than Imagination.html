@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AirNix — More Than Imagination</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#211D2E; --bg-grid:#2A2540; --ink:#F1EDE4; --ink-dim:#A79FC0;
+  --accent:#5EEAD4; --line:#3A3352; --serif:'Source Serif 4', Georgia, serif;
+  --sans:'Space Grotesk', 'Segoe UI', Helvetica, Arial, sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink); font-family:var(--serif);
+  background-image:
+    linear-gradient(var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+  background-size:44px 44px;
+  min-height:100%;
+}
+a{color:inherit}
+.wrap{max-width:920px; margin:0 auto; padding:0 24px}
+
+header{
+  position:sticky; top:0; top:env(safe-area-inset-top,0px);
+  z-index:10; backdrop-filter:blur(8px); background:rgba(11,18,32,.82);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:920px; margin:0 auto}
+.brand{font-family:var(--sans); font-weight:600; font-size:1.05rem; letter-spacing:.01em; text-decoration:none}
+.brand span{color:var(--accent)}
+.navlinks{display:flex; gap:28px; font-family:var(--sans); font-size:.92rem}
+.navlinks a{text-decoration:none; color:var(--ink-dim); padding-bottom:4px; border-bottom:2px solid transparent; transition:color .15s, border-color .15s}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a.active{color:var(--ink); border-color:var(--accent)}
+
+main{padding:64px 0 100px}
+.page{display:none}
+.page.show{display:block}
+
+h1{font-family:var(--sans); font-weight:600; font-size:2.6rem; line-height:1.12; margin:0 0 20px; max-width:14ch}
+h2{font-family:var(--sans); font-weight:600; font-size:1.5rem; margin:0 0 14px}
+p.lede{font-size:1.15rem; line-height:1.6; color:var(--ink-dim); max-width:56ch; margin:0 0 32px}
+p{line-height:1.65; max-width:62ch}
+
+.tag{font-family:var(--sans); font-size:.82rem; color:var(--accent); margin-bottom:14px; display:block}
+
+.cta-row{display:flex; gap:16px; flex-wrap:wrap; margin-top:28px}
+.btn{font-family:var(--sans); font-size:.92rem; font-weight:500; text-decoration:none; padding:12px 22px; border-radius:2px; display:inline-block}
+.btn.primary{background:var(--accent); color:#12100d}
+.btn.ghost{border:1px solid var(--line); color:var(--ink)}
+
+.domains{margin-top:56px; border-top:1px solid var(--line)}
+.domain{display:grid; grid-template-columns:64px 1fr; gap:20px; padding:26px 0; border-bottom:1px solid var(--line)}
+.domain .coord{font-family:var(--sans); color:var(--ink-dim); font-size:.85rem; padding-top:2px}
+.domain h3{font-family:var(--sans); font-weight:600; font-size:1.1rem; margin:0 0 8px}
+.domain p{margin:0; color:var(--ink-dim); font-size:.98rem; max-width:52ch}
+
+.steps{margin-top:44px}
+.step{display:grid; grid-template-columns:48px 1fr; gap:20px; padding:22px 0; border-top:1px solid var(--line)}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step .n{font-family:var(--sans); color:var(--accent); font-weight:600}
+.step h3{font-family:var(--sans); font-weight:600; font-size:1.05rem; margin:0 0 6px}
+.step p{margin:0; color:var(--ink-dim); font-size:.97rem}
+
+.principles{display:grid; grid-template-columns:1fr 1fr; gap:20px 32px; margin-top:40px}
+.principles div h3{font-family:var(--sans); font-weight:600; font-size:1rem; margin:0 0 6px}
+.principles div p{margin:0; color:var(--ink-dim); font-size:.94rem}
+@media (max-width:600px){.principles{grid-template-columns:1fr}}
+
+.contact-block{margin-top:36px; padding:32px; border:1px solid var(--line); background:rgba(255,255,255,.02)}
+.email-link{font-family:var(--sans); font-size:1.3rem; color:var(--accent); text-decoration:none; word-break:break-all}
+
+footer{border-top:1px solid var(--line); padding:28px 24px; font-family:var(--sans); font-size:.82rem; color:var(--ink-dim)}
+footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+
+@media (max-width:640px){
+  h1{font-size:2rem}
+  .navlinks{gap:16px; font-size:.85rem}
+  .domain{grid-template-columns:44px 1fr}
+  .step{grid-template-columns:36px 1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#/home">Air<span>Nix</span></a>
+    <nav class="navlinks" id="navlinks">
+      <a href="#/home" data-route="home">Home</a>
+      <a href="#/about" data-route="about">About</a>
+      <a href="#/services" data-route="services">Services</a>
+      <a href="#/contact" data-route="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="page" id="home">
+    <span class="tag">More than imagination</span>
+    <h1>What if technology didn't stop at what already exists?</h1>
+    <p class="lede">AirNix explores, designs, and engineers digital systems, intelligent software, and future-facing experiences. We don't just use newer tools — we look at problems differently, then build what we find.</p>
+    <div class="cta-row">
+      <a class="btn primary" href="#/services">See what we build</a>
+      <a class="btn ghost" href="#/contact">Start a conversation</a>
+    </div>
+
+    <div class="domains">
+      <div class="domain"><div class="coord">A1</div><div><h3>AI</h3><p>From information to intelligence — intelligent software, automation, and assistants.</p></div></div>
+      <div class="domain"><div class="coord">A2</div><div><h3>Cloud</h3><p>Infrastructure that moves with the idea — scalable, connected, cloud-ready systems.</p></div></div>
+      <div class="domain"><div class="coord">A3</div><div><h3>Systems</h3><p>Complexity, engineered into simplicity — the architecture behind digital products.</p></div></div>
+      <div class="domain"><div class="coord">A4</div><div><h3>Robotics</h3><p>Machines that can perceive, systems that can act — software meets hardware.</p></div></div>
+      <div class="domain"><div class="coord">A5</div><div><h3>Security</h3><p>Built to be trusted — privacy and resilience engineered in from the start.</p></div></div>
+      <div class="domain"><div class="coord">A6</div><div><h3>Research</h3><p>Today's experiment can become tomorrow's technology.</p></div></div>
+    </div>
+  </section>
+
+  <section class="page" id="about">
+    <span class="tag">Who we are</span>
+    <h1>Builders of what comes next.</h1>
+    <p class="lede">AirNix brings software engineering, artificial intelligence, cloud technologies, robotics, security, and research together under one vision — from the interfaces people touch every day to the intelligent systems working behind them.</p>
+
+    <h2>Our vision</h2>
+    <p>The future rarely arrives as a finished product. It begins as an idea, a strange question, a prototype nobody has built before. We want technology that feels ahead of its time while staying useful and accessible — and we want to help create that change, not just follow it.</p>
+
+    <h2>Our mission</h2>
+    <p>We explore difficult problems and turn ambitious concepts into working technology: creative thinking, software engineering, automation, and human-centered design, combined with one objective — think beyond the obvious, engineer with purpose, build what matters.</p>
+
+    <h2>How we approach a project</h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><div><h3>Idea</h3><p>Identify the problem, understand the opportunity, define what we're actually creating.</p></div></div>
+      <div class="step"><div class="n">02</div><div><h3>Explore</h3><p>Research technologies, experiment with approaches, challenge assumptions.</p></div></div>
+      <div class="step"><div class="n">03</div><div><h3>Engineer</h3><p>Design architecture, develop software, build the foundations the product needs.</p></div></div>
+      <div class="step"><div class="n">04</div><div><h3>Test</h3><p>A concept isn't finished when it works once — we test behavior, performance, and edge cases.</p></div></div>
+      <div class="step"><div class="n">05</div><div><h3>Evolve</h3><p>We observe, learn, and keep developing the system as new possibilities emerge.</p></div></div>
+    </div>
+
+    <h2 style="margin-top:48px">What we stand for</h2>
+    <div class="principles">
+      <div><h3>Think differently</h3><p>We challenge assumptions before accepting them.</p></div>
+      <div><h3>Engineer deeply</h3><p>Ideas require strong technical foundations.</p></div>
+      <div><h3>Design intentionally</h3><p>Every interaction should have a reason.</p></div>
+      <div><h3>Experiment fearlessly</h3><p>New ideas require room to fail, learn, and evolve.</p></div>
+      <div><h3>Build responsibly</h3><p>Technology should be useful, reliable, human-centered.</p></div>
+      <div><h3>Keep moving</h3><p>The moment technology stops evolving, it becomes yesterday's.</p></div>
+    </div>
+  </section>
+
+  <section class="page" id="services">
+    <span class="tag">What we build</span>
+    <h1>One company. Multiple technological frontiers.</h1>
+    <p class="lede">We choose technologies according to the problem, not the other way around. Tools change; engineering principles remain.</p>
+
+    <div class="domains" style="margin-top:24px">
+      <div class="domain"><div class="coord">01</div><div><h3>AI</h3><p>Intelligent software, AI-powered applications, computer vision, and intelligent assistants — from information to intelligence.</p></div></div>
+      <div class="domain"><div class="coord">02</div><div><h3>Cloud</h3><p>Scalable digital infrastructure, connected platforms, and distributed applications for modern environments.</p></div></div>
+      <div class="domain"><div class="coord">03</div><div><h3>Systems</h3><p>The architecture behind digital products — connecting interfaces, services, data, and infrastructure into one coherent system.</p></div></div>
+      <div class="domain"><div class="coord">04</div><div><h3>Robotics</h3><p>Software, hardware, perception, and control — exploring how machines interact with and understand their environments.</p></div></div>
+      <div class="domain"><div class="coord">05</div><div><h3>Security</h3><p>Privacy, authentication, authorization, and resilient architecture treated as an engineering principle, not an afterthought.</p></div></div>
+      <div class="domain"><div class="coord">06</div><div><h3>Research</h3><p>Emerging technologies, unconventional interfaces, and experimental software — ideas that may become tomorrow's products.</p></div></div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn primary" href="#/contact">Talk to us about a project</a>
+    </div>
+  </section>
+
+  <section class="page" id="contact">
+    <span class="tag">Let's build what's next</span>
+    <h1>Have an idea worth engineering?</h1>
+    <p class="lede">A difficult problem. A technology concept. A product that doesn't exist yet. A system that needs to be reimagined. Start a conversation with AirNix.</p>
+
+    <div class="contact-block">
+      <p style="margin:0 0 10px; color:var(--ink-dim); font-family:var(--sans); font-size:.85rem">Email</p>
+      <a class="email-link" href="mailto:airnix@gmail.com">airnix@gmail.com</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>AirNix — More Than Imagination.</span>
+    <span>&copy; 2026 AirNix</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var routes = ['home','about','services','contact'];
+  function render(){
+    var hash = (location.hash || '#/home').replace('#/','');
+    if(routes.indexOf(hash) === -1) hash = 'home';
+    routes.forEach(function(r){
+      document.getElementById(r).classList.toggle('show', r === hash);
+    });
+    document.querySelectorAll('#navlinks a').forEach(function(a){
+      a.classList.toggle('active', a.dataset.route === hash);
+    });
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', render);
+  render();
+})();
+</script>
+
+</body>
+</html>
